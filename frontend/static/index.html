@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Image Indexer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-folder-open"></i> Local Image Indexer</h1>
+            <p class="subtitle">Using CLIP + FAISS for powerful image search</p>
+        </header>
+
+        <div class="card">
+            <div class="card-content">
+                <h2><i class="fas fa-images"></i> Select Image Folder</h2>
+                <p>Enter the full Windows path to your image folder</p>
+
+                <div class="path-input-container">
+                    <div class="input-icon-wrapper">
+                        <i class="fas fa-folder input-icon"></i>
+                        <input type="text" id="directoryPath" class="path-input" placeholder="e.g., C:\Users\YourName\Pictures\Vacation">
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><i class="fas fa-info-circle"></i> Path will be automatically converted to WSL format by the server.</p>
+                </div>
+
+                <button id="indexButton" class="primary-button">
+                    <i class="fas fa-search"></i> Start Indexing
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h2><i class="fas fa-search"></i> Search Images</h2>
+
+                <input type="text" id="searchText" placeholder="Enter text to search" class="path-input" />
+                <p style="text-align:center; margin: 10px 0;">or</p>
+                <input type="file" id="searchImage" accept="image/*" />
+
+                <button id="searchButton" class="primary-button" style="margin-top: 15px;">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+
+        <div id="statusCard" class="card status-card hidden">
+            <div class="card-content">
+                <h2 id="statusHeader"><i class="fas fa-spinner fa-spin"></i> Processing...</h2>
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </div>
+
+        <div id="resultsCard" class="card hidden">
+            <div class="card-content">
+                <h2><i class="fas fa-image"></i> Search Results</h2>
+                <div id="resultsGallery" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CLIP + FAISS Image Indexing System</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
